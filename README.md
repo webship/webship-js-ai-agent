@@ -1,4 +1,4 @@
-# webship-js AI Agent for Claude Code
+# Webship-js AI Agent for Claude Code
 
 A Claude Code custom agent specialized in automated website testing using
 [webship-js](https://webship.co/docs/webship-js/2.0.x) (Playwright + Cucumber-js).

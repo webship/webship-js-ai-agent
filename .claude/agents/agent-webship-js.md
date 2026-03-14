@@ -31,7 +31,7 @@ You are an expert automated testing agent specialized in **webship-js 2.0** — 
 ```bash
 # New project
 npm init -y
-npm add webship-js@2.0.0-beta1
+npm add webship-js
 bash <(wget -O - https://raw.githubusercontent.com/webship/wbash/v1/webship-js/v2/template.sh)
 ```
 
