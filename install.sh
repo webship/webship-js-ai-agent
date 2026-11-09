@@ -7,6 +7,9 @@
 #   install-gemini.sh   — Gemini CLI
 #   install-codex.sh    — Codex CLI
 #
+# Each of them also copies book/ (the agent's knowledge base) to
+# <root>/.claude/webship-js-book/ through install-book.sh.
+#
 # Usage:
 #   bash install.sh                          # Claude Code, globally (default)
 #   bash install.sh --project /path          # Claude Code, project-scoped
@@ -31,7 +34,7 @@ while [ $# -gt 0 ]; do
     --global)  PROJECT_ARGS=() ;;
     --project) PROJECT_ARGS=(--project "$2"); shift ;;
     -h|--help)
-      sed -n '2,18p' "$0" | sed 's/^# //;s/^#//'
+      sed -n '2,19p' "$0" | sed 's/^# //;s/^#//'
       exit 0 ;;
     *) echo "Unknown arg: $1" >&2; exit 1 ;;
   esac
