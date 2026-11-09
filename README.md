@@ -87,6 +87,9 @@ Codex CLI:
 - `AGENTS.md` at the target root
 - `.codex/prompts/webship-js-agent.md`
 
+All four:
+- `.claude/webship-js-book/` (the book, see below) at the target root
+
 ## Usage
 
 ### Claude Code
@@ -152,6 +155,27 @@ Targets **webship-js 2.0.x**. See
 step reference. The agent loads
 `node_modules/webship-js/tests/step-definitions/*.js` as source of truth
 when available.
+
+## The book
+
+The agent's knowledge base is the book *Automated Functional Testing
+Recipes* (v1.0.86): 51 chapters and 4 appendices on BDD with webship-js,
+from Gherkin and the first real test suite through forms, waits, modals,
+tables, authentication and API testing, to custom step definitions, the
+complete step definition reference, web-first assertions, debugging, CI,
+and patterns vs antipatterns.
+
+Its Markdown sources live in [`book/`](book/) in this repository:
+`book/README.md` is the table of contents, one file per chapter and
+appendix, and the whole book in one file,
+`book/Automated-Functional-Testing-Recipes-v1.0.86-complete.md`. The files
+are copied as published and are not edited here.
+
+Every installer also copies `book/` next to the agent, to
+`~/.claude/webship-js-book/` (global) or `<project>/.claude/webship-js-book/`
+(project), for all four assistants (`install-book.sh` does the copy). The
+agent reads the table of contents and then the chapter that matches the
+task before it writes scenarios or step definitions.
 
 ## Related
 

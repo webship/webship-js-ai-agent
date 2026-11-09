@@ -4,6 +4,7 @@
 # Writes:
 #   <root>/AGENTS.md
 #   <root>/.codex/prompts/webship-js-agent.md
+#   <root>/.claude/webship-js-book/           (the book, via install-book.sh)
 #
 # Usage:
 #   bash install-codex.sh                    # global:  $HOME/AGENTS.md + ~/.codex/prompts/
@@ -25,7 +26,7 @@ while [ $# -gt 0 ]; do
     --global)  PROJECT="" ;;
     --project) PROJECT="$2"; shift ;;
     -h|--help)
-      sed -n '2,10p' "$0" | sed 's/^# //;s/^#//'
+      sed -n '2,11p' "$0" | sed 's/^# //;s/^#//'
       exit 0 ;;
     *) echo "Unknown arg: $1" >&2; exit 1 ;;
   esac
@@ -63,6 +64,10 @@ This repository uses [webship-js 2.0.x](https://webship.co/docs/webship-js/2.0.x
 - DDEV projects: run tests via `ddev npm run test:*` or `ddev exec`.
 - `npx init-webship-js` is idempotent; preserve user files unless
   `--force` was explicitly requested.
+- Knowledge base: the book "Automated Functional Testing Recipes" is at
+  `.claude/webship-js-book/` (project) or `~/.claude/webship-js-book/`
+  (global). Read its `README.md`, then the chapter that matches the task,
+  before writing scenarios or step definitions.
 
 ## Commands
 
@@ -89,3 +94,10 @@ cp "$AGENT_FILE" "$target_prompts/webship-js-agent.md"
 
 echo "[codex] AGENTS.md -> $root/AGENTS.md"
 echo "[codex] prompt   -> $target_prompts/webship-js-agent.md"
+
+# The book the agent reads as its knowledge base (see install-book.sh).
+if [ -n "$PROJECT" ]; then
+  bash "$SCRIPT_DIR/install-book.sh" --project "$PROJECT"
+else
+  bash "$SCRIPT_DIR/install-book.sh"
+fi

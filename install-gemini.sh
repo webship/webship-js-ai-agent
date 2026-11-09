@@ -4,6 +4,7 @@
 # Writes:
 #   <target>/GEMINI.md
 #   <target>/commands/webship-js/agent.toml       (invoke: /webship-js:agent)
+#   <root>/.claude/webship-js-book/              (the book, via install-book.sh)
 #
 # Usage:
 #   bash install-gemini.sh                    # global:  ~/.gemini/
@@ -25,7 +26,7 @@ while [ $# -gt 0 ]; do
     --global)  PROJECT="" ;;
     --project) PROJECT="$2"; shift ;;
     -h|--help)
-      sed -n '2,10p' "$0" | sed 's/^# //;s/^#//'
+      sed -n '2,11p' "$0" | sed 's/^# //;s/^#//'
       exit 0 ;;
     *) echo "Unknown arg: $1" >&2; exit 1 ;;
   esac
@@ -54,6 +55,11 @@ or the 2.0.x branch at https://github.com/webship/webship-js.
 
 Always wait after submits (`And I wait for AJAX to finish`). Use the
 link-by-attribute form for href/src assertions.
+
+Knowledge base: the book "Automated Functional Testing Recipes" is at
+`.claude/webship-js-book/` (project) or `~/.claude/webship-js-book/`
+(global). Read its `README.md`, then the chapter that matches the task,
+before writing scenarios or step definitions.
 EOF
 
 {
@@ -65,3 +71,10 @@ EOF
 
 echo "[gemini] context -> $target/GEMINI.md"
 echo "[gemini] command -> $target/commands/webship-js/agent.toml"
+
+# The book the agent reads as its knowledge base (see install-book.sh).
+if [ -n "$PROJECT" ]; then
+  bash "$SCRIPT_DIR/install-book.sh" --project "$PROJECT"
+else
+  bash "$SCRIPT_DIR/install-book.sh"
+fi

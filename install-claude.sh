@@ -4,6 +4,8 @@
 # Usage:
 #   bash install-claude.sh                    # global:  ~/.claude/agents/
 #   bash install-claude.sh --project /path    # project: <path>/.claude/agents/
+#
+# Also copies book/ to <root>/.claude/webship-js-book/ (install-book.sh).
 
 set -e
 
@@ -21,7 +23,7 @@ while [ $# -gt 0 ]; do
     --global)  PROJECT="" ;;
     --project) PROJECT="$2"; shift ;;
     -h|--help)
-      sed -n '2,6p' "$0" | sed 's/^# //;s/^#//'
+      sed -n '2,8p' "$0" | sed 's/^# //;s/^#//'
       exit 0 ;;
     *) echo "Unknown arg: $1" >&2; exit 1 ;;
   esac
@@ -37,3 +39,10 @@ fi
 mkdir -p "$target"
 cp "$AGENT_FILE" "$target/agent-webship-js.md"
 echo "[claude] installed to $target/agent-webship-js.md"
+
+# The book the agent reads as its knowledge base (see install-book.sh).
+if [ -n "$PROJECT" ]; then
+  bash "$SCRIPT_DIR/install-book.sh" --project "$PROJECT"
+else
+  bash "$SCRIPT_DIR/install-book.sh"
+fi
