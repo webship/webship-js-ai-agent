@@ -4,7 +4,7 @@
 # Writes:
 #   <target>/copilot-instructions.md
 #   <target>/chatmodes/webship-js.chatmode.md
-#   <root>/.claude/webship-js-book/           (the book, via install-book.sh)
+#   <root>/.claude/automated-functional-testing-recipes/           (the book, via install-book.sh)
 #
 # Usage:
 #   bash install-copilot.sh                    # global:  ~/.config/github-copilot/
@@ -64,7 +64,7 @@ Critical rules:
 4. `npx init-webship-js` is idempotent — preserve user files.
 
 Knowledge base: the book "Automated Functional Testing Recipes" is at
-`.claude/webship-js-book/` (project) or `~/.claude/webship-js-book/`
+`.claude/automated-functional-testing-recipes/` (project) or `~/.claude/automated-functional-testing-recipes/`
 (global). Read its `README.md`, then the chapter that matches the task,
 before writing scenarios or step definitions.
 EOF

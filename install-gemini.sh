@@ -4,7 +4,7 @@
 # Writes:
 #   <target>/GEMINI.md
 #   <target>/commands/webship-js/agent.toml       (invoke: /webship-js:agent)
-#   <root>/.claude/webship-js-book/              (the book, via install-book.sh)
+#   <root>/.claude/automated-functional-testing-recipes/              (the book, via install-book.sh)
 #
 # Usage:
 #   bash install-gemini.sh                    # global:  ~/.gemini/
@@ -57,7 +57,7 @@ Always wait after submits (`And I wait for AJAX to finish`). Use the
 link-by-attribute form for href/src assertions.
 
 Knowledge base: the book "Automated Functional Testing Recipes" is at
-`.claude/webship-js-book/` (project) or `~/.claude/webship-js-book/`
+`.claude/automated-functional-testing-recipes/` (project) or `~/.claude/automated-functional-testing-recipes/`
 (global). Read its `README.md`, then the chapter that matches the task,
 before writing scenarios or step definitions.
 EOF

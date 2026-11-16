@@ -7,8 +7,8 @@
 #   install-gemini.sh   — Gemini CLI
 #   install-codex.sh    — Codex CLI
 #
-# Each of them also copies book/ (the agent's knowledge base) to
-# <root>/.claude/webship-js-book/ through install-book.sh.
+# Each of them also copies automated-functional-testing-recipes/ (the agent's knowledge base) to
+# <root>/.claude/automated-functional-testing-recipes/ through install-book.sh.
 #
 # Usage:
 #   bash install.sh                          # Claude Code, globally (default)

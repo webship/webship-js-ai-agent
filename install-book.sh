@@ -3,21 +3,21 @@
 #
 # The agent reads the book as its knowledge base (table of contents in
 # README.md, then the chapter that matches the task). The per-assistant
-# installers call this script; it copies book/ to:
+# installers call this script; it copies automated-functional-testing-recipes/ to:
 #
-#   <root>/.claude/webship-js-book/
+#   <root>/.claude/automated-functional-testing-recipes/
 #
 # where <root> is $HOME for a global install and the project path for a
 # project install, so the same path works for every assistant.
 #
 # Usage:
-#   bash install-book.sh                    # global:  ~/.claude/webship-js-book/
-#   bash install-book.sh --project /path    # project: <path>/.claude/webship-js-book/
+#   bash install-book.sh                    # global:  ~/.claude/automated-functional-testing-recipes/
+#   bash install-book.sh --project /path    # project: <path>/.claude/automated-functional-testing-recipes/
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-BOOK_DIR="$SCRIPT_DIR/book"
+BOOK_DIR="$SCRIPT_DIR/automated-functional-testing-recipes"
 
 if [ ! -f "$BOOK_DIR/README.md" ]; then
   echo "Error: book not found at $BOOK_DIR" >&2
@@ -38,9 +38,9 @@ while [ $# -gt 0 ]; do
 done
 
 if [ -n "$PROJECT" ]; then
-  target="$PROJECT/.claude/webship-js-book"
+  target="$PROJECT/.claude/automated-functional-testing-recipes"
 else
-  target="$HOME/.claude/webship-js-book"
+  target="$HOME/.claude/automated-functional-testing-recipes"
 fi
 
 mkdir -p "$target"

@@ -55,9 +55,9 @@ We learned a lot by experimenting and working on Varbase and Varbase-project —
 
 The book *Automated Functional Testing Recipes* (v1.0.86) ships with this agent as Markdown, one file per chapter. Look for it in this order and use the first that exists:
 
-1. `.claude/webship-js-book/` in the current project (project install).
-2. `~/.claude/webship-js-book/` (global install; the installers put it there).
-3. `book/` in a checkout of https://github.com/webship/webship-js-ai-agent.
+1. `.claude/automated-functional-testing-recipes/` in the current project (project install).
+2. `~/.claude/automated-functional-testing-recipes/` (global install; the installers put it there).
+3. `automated-functional-testing-recipes/` in a checkout of https://github.com/webship/webship-js-ai-agent.
 
 Read its `README.md` (the table of contents) first, then the chapter that matches the task, before writing scenarios or step definitions:
 
