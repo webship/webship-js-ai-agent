@@ -166,7 +166,7 @@ complete step definition reference, web-first assertions, debugging, CI,
 and patterns vs antipatterns.
 
 Its Markdown sources live in [`automated-functional-testing-recipes/`](automated-functional-testing-recipes/) in this repository:
-`automated-functional-testing-recipes/README.md` is the table of contents, one file per chapter and
+`automated-functional-testing-recipes/README.md` says what the folder holds; there is one file per chapter and
 appendix, and the whole book in one file,
 `automated-functional-testing-recipes/Automated-Functional-Testing-Recipes-v1.0.86-complete.md`. The files
 are copied as published and are not edited here.
@@ -174,8 +174,8 @@ are copied as published and are not edited here.
 Every installer also copies `automated-functional-testing-recipes/` next to the agent, to
 `~/.claude/automated-functional-testing-recipes/` (global) or `<project>/.claude/automated-functional-testing-recipes/`
 (project), for all four assistants (`install-book.sh` does the copy). The
-agent reads the table of contents and then the chapter that matches the
-task before it writes scenarios or step definitions.
+agent reads the chapter that matches the
+task (one file per chapter, named by its subject) before it writes scenarios or step definitions.
 
 ## Related
 
