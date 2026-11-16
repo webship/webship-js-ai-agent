@@ -5,7 +5,7 @@
 #   bash install-claude.sh                    # global:  ~/.claude/agents/
 #   bash install-claude.sh --project /path    # project: <path>/.claude/agents/
 #
-# Also copies book/ to <root>/.claude/webship-js-book/ (install-book.sh).
+# Also copies automated-functional-testing-recipes/ to <root>/.claude/automated-functional-testing-recipes/ (install-book.sh).
 
 set -e
 

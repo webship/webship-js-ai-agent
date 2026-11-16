@@ -4,7 +4,7 @@
 # Writes:
 #   <root>/AGENTS.md
 #   <root>/.codex/prompts/webship-js-agent.md
-#   <root>/.claude/webship-js-book/           (the book, via install-book.sh)
+#   <root>/.claude/automated-functional-testing-recipes/           (the book, via install-book.sh)
 #
 # Usage:
 #   bash install-codex.sh                    # global:  $HOME/AGENTS.md + ~/.codex/prompts/
@@ -65,7 +65,7 @@ This repository uses [webship-js 2.0.x](https://webship.co/docs/webship-js/2.0.x
 - `npx init-webship-js` is idempotent; preserve user files unless
   `--force` was explicitly requested.
 - Knowledge base: the book "Automated Functional Testing Recipes" is at
-  `.claude/webship-js-book/` (project) or `~/.claude/webship-js-book/`
+  `.claude/automated-functional-testing-recipes/` (project) or `~/.claude/automated-functional-testing-recipes/`
   (global). Read its `README.md`, then the chapter that matches the task,
   before writing scenarios or step definitions.
 

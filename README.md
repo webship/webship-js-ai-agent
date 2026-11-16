@@ -88,7 +88,7 @@ Codex CLI:
 - `.codex/prompts/webship-js-agent.md`
 
 All four:
-- `.claude/webship-js-book/` (the book, see below) at the target root
+- `.claude/automated-functional-testing-recipes/` (the book, see below) at the target root
 
 ## Usage
 
@@ -165,14 +165,14 @@ tables, authentication and API testing, to custom step definitions, the
 complete step definition reference, web-first assertions, debugging, CI,
 and patterns vs antipatterns.
 
-Its Markdown sources live in [`book/`](book/) in this repository:
-`book/README.md` is the table of contents, one file per chapter and
+Its Markdown sources live in [`automated-functional-testing-recipes/`](automated-functional-testing-recipes/) in this repository:
+`automated-functional-testing-recipes/README.md` is the table of contents, one file per chapter and
 appendix, and the whole book in one file,
-`book/Automated-Functional-Testing-Recipes-v1.0.86-complete.md`. The files
+`automated-functional-testing-recipes/Automated-Functional-Testing-Recipes-v1.0.86-complete.md`. The files
 are copied as published and are not edited here.
 
-Every installer also copies `book/` next to the agent, to
-`~/.claude/webship-js-book/` (global) or `<project>/.claude/webship-js-book/`
+Every installer also copies `automated-functional-testing-recipes/` next to the agent, to
+`~/.claude/automated-functional-testing-recipes/` (global) or `<project>/.claude/automated-functional-testing-recipes/`
 (project), for all four assistants (`install-book.sh` does the copy). The
 agent reads the table of contents and then the chapter that matches the
 task before it writes scenarios or step definitions.
