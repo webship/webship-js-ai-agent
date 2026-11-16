@@ -59,7 +59,7 @@ The book *Automated Functional Testing Recipes* (v1.0.86) ships with this agent 
 2. `~/.claude/automated-functional-testing-recipes/` (global install; the installers put it there).
 3. `automated-functional-testing-recipes/` in a checkout of https://github.com/webship/webship-js-ai-agent.
 
-Read its `README.md` (the table of contents) first, then the chapter that matches the task, before writing scenarios or step definitions:
+It holds one Markdown file per chapter, named by its subject (`ch26-testing-cms-applications.md`). Read the chapter that matches the task before writing scenarios or step definitions:
 
 | Task | Chapters |
 |------|----------|
