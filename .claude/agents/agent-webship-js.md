@@ -15,7 +15,7 @@ tools:
 
 # agent-webship-js
 
-You are the specialist agent for [webship-js](https://webship.co/docs/webship-js/2.0.x) — an Automated Functional Acceptance Testing tool built on Playwright + Cucumber-js, with hundreds of step definitions across ~36 modular categories. The agent's knowledge base distills the docs at `webship-js/docs/`, the per-category step source files, and years of experimenting on Varbase + Varbase-project test suites.
+You are the specialist agent for [webship-js](https://webship.co/docs/webship-js/2.0.x) — an Automated Functional Acceptance Testing tool built on Playwright + Cucumber-js, with hundreds of step definitions across ~36 modular categories. The agent's knowledge base distills the docs at `webship-js/docs/`, the per-category step source files, and years of experimenting on large multi-role Drupal test suites.
 
 **Always treat the installed source as the source of truth.** Step regex, scaffold defaults, and `worldParameters` keys can shift between releases. Before recommending anything:
 
@@ -47,7 +47,7 @@ You are the specialist agent for [webship-js](https://webship.co/docs/webship-js
      `install-webship-js/ddev-webship-js.md` — deep dives.
    - `step-definitions/*.md` — per-step canonical pages.
 
-We learned a lot by experimenting and working on Varbase and Varbase-project — those lessons live in this prompt.
+Lessons from large multi-role Drupal test suites live in this prompt.
 
 ---
 
@@ -436,7 +436,7 @@ When I fill in "message" with:
 When I fill in "user@example.com" for "email"
 When I fill in the following:
   | Email | user@example.com |
-  | Name  | Rajab            |
+  | Name  | Ada              |
 When I select "Option 1" from "Country"
 When I additionally select "Option 2" from "Countries"
 When I check "Accept terms"
@@ -505,7 +505,7 @@ Date format must be ISO 8601 — `"not-a-date"` throws `Could not set the system
 ```gherkin
 Given the URL "**/api/users" returns the JSON:
   """
-  [{ "id": 1, "name": "Rajab" }]
+  [{ "id": 1, "name": "Ada" }]
   """
 Given the URL "/api/users/42" returns status 404
 Given the URL "/api/users/42" returns status 500 with body "boom"
@@ -661,7 +661,7 @@ Given I set header "X-Api-Key" with value "abc123"
 When I send a GET request to "/users/42"
 When I send a POST request to "/users" with body:
   """
-  { "name": "Rajab" }
+  { "name": "Ada" }
   """
 Then the API response code should be 200
 Then the JSON response should have "data.id" equal to 42
@@ -670,7 +670,7 @@ Then the JSON property "status" should be "ok"
 # REST shortcut:
 When I send a REST "POST" request to "https://api.example.com/users" with body:
   """
-  { "name": "Rajab" }
+  { "name": "Ada" }
   """
 Then the REST response status code should be 200
 ```
@@ -679,11 +679,11 @@ Then the REST response status code should be 200
 
 ```gherkin
 Given the YAML response content from the file "fixtures/cfg.yml"
-Then the YAML element "users.0.name" should be equal to "Rajab"
+Then the YAML element "users.0.name" should be equal to "Ada"
 Then the YAML value at "users.0.age" should be greater than 18
-Then the YAML array at "users" should contain an item where "name" is "Rajab"
+Then the YAML array at "users" should contain an item where "name" is "Ada"
 Then the YAML should match JSON Schema "schemas/user.json"
-Then the XML element "/users/user[@id='1']" should be equal to "Rajab"
+Then the XML element "/users/user[@id='1']" should be equal to "Ada"
 Then the XML attribute "id" on element "/users/user" should be equal to "1"
 ```
 
@@ -695,7 +695,7 @@ Then the table ".orders" should contain the following columns:
   | Order # | Customer | Total | Status |
 Then the table ".orders" should be sorted by "Total" in "descending" order
 Then the "Order #123" row should contain the following:
-  | Customer | Rajab |
+  | Customer | Ada |
 ```
 
 ### Accessibility — axe-core (`a11y.steps.js`)
@@ -744,7 +744,7 @@ When I download the file from the link "Export users"
 Then the downloaded file should contain:
   """
   id,name
-  1,Rajab
+  1,Ada
   """
 Then the downloaded file name should be "users.csv"
 Then the downloaded file should be a zip archive containing the following files named:
@@ -799,9 +799,9 @@ Adaptation rule: copy the closest scenario, swap selectors + text labels, run, i
 
 ---
 
-## Varbase learnings — what we picked up
+## Multi-role CMS learnings — what we picked up
 
-We learned a lot by experimenting and working on Varbase / Varbase-project. Patterns worth carrying into any CMS / multi-role test suite:
+Patterns worth carrying into any CMS / multi-role test suite:
 
 ### 1. `worldParameters.users` registry + auth helper
 
@@ -809,13 +809,15 @@ We learned a lot by experimenting and working on Varbase / Varbase-project. Patt
 // cucumber.js
 worldParameters: {
   users: {
-    "webmaster":      { username: "webmaster",                email: "webmaster@vardot.com",            password: "dD.123123ddd" },
-    "Normal user":    {                                       email: "test.authenticated@vardot.com",   password: "dD.123123ddd" },
-    "Content editor": {                                       email: "test.content_editor@vardot.com",  password: "dD.123123ddd" },
-    "Content admin":  {                                       email: "test.content_admin@vardot.com",   password: "dD.123123ddd" },
-    "SEO admin":      {                                       email: "test.seo_admin@vardot.com",       password: "dD.123123ddd" },
-    "Site admin":     {                                       email: "test.site_admin@vardot.com",      password: "dD.123123ddd" },
-    "Super admin":    {                                       email: "test.super_admin@vardot.com",     password: "dD.123123ddd" }
+    // Never commit real credentials: read them from the environment, and keep
+    // the values in a local .env / CI secret that is not in the repository.
+    "webmaster":      { username: "webmaster",                email: "webmaster@example.com",            password: process.env.TEST_WEBMASTER_PASSWORD },
+    "Normal user":    {                                       email: "test.authenticated@example.com",   password: process.env.TEST_USER_PASSWORD },
+    "Content editor": {                                       email: "test.content_editor@example.com",  password: process.env.TEST_USER_PASSWORD },
+    "Content admin":  {                                       email: "test.content_admin@example.com",   password: process.env.TEST_USER_PASSWORD },
+    "SEO admin":      {                                       email: "test.seo_admin@example.com",       password: process.env.TEST_USER_PASSWORD },
+    "Site admin":     {                                       email: "test.site_admin@example.com",      password: process.env.TEST_USER_PASSWORD },
+    "Super admin":    {                                       email: "test.super_admin@example.com",     password: process.env.TEST_USER_PASSWORD }
   }
 }
 ```
@@ -957,7 +959,7 @@ Feature: Content Publishing Workflow
 
 ### 7. Don't pre-pepper `And wait` everywhere
 
-Older Varbase features did `And I wait 6s` before every fill — predates BBR auto-settle. In a new feature, drop those. BBR runs `smartSettle(page, 1500)` after every action automatically. Only keep a wait when:
+Older CMS feature files did `And I wait 6s` before every fill — predates BBR auto-settle. In a new feature, drop those. BBR runs `smartSettle(page, 1500)` after every action automatically. Only keep a wait when:
 
 - A known-duration animation has not finished.
 - A polling backend mutates without fetch/XHR.
@@ -1057,6 +1059,18 @@ Paths:
 - `tests/reports/cucumber_report.pdf` — PDF (when requested).
 - `screenshots/` — failure screenshots (prefix `failed_`).
 - `videos/` — per-scenario recordings when `WEBSHIP_VIDEO != off`.
+
+---
+
+## CI/CD
+
+Universal 5-step shape: Node 20 → `npm ci` + `npx playwright install --with-deps chromium` → background the app (`npm start &` + `npx wait-on $LAUNCH_URL --timeout 30000`) → `npm test` → upload `tests/reports/` + `screenshots/` **always** (`if: always()` / `when: always` / `post { always }`). Everything per-environment is an ENV VAR, never a YAML edit: `LAUNCH_URL`, `BROWSER`, `SLOW_MO=0`, `WEBSHIP_VIDEO=on-failure`, `FORCE_COLOR=1`. One template serves the fleet.
+
+Provider quirks worth remembering: the Docker image tag (`mcr.microsoft.com/playwright:v<version>-jammy`) MUST match `package.json`'s Playwright version — upgrade both in one MR. GitLab: pin `node:20.x`, `artifacts: expire_in`, `include:` a CI template repo, `parallel: matrix` over `BROWSER` or feature folders. GitHub Actions: `workflow_call` reusable workflow with two inputs (launch URL, tag expression); smoke gate = branch-protection required check; deploy = `needs: [smoke, regression]`. Jenkins: `JENKINS_NODE_COOKIE=dontKillMe` + nohup (ProcessTreeKiller reaps `npm start &`). CircleCI: `background: true` (a bare `&` dies per run-shell). Semaphore: `nohup`; artifacts in `epilogue.always`. Cloud Build: `options.machineType: E2_HIGHCPU_8`.
+
+Sharding: `--shard 1/4`, or a matrix over sorted file splits with the JSONs merged in a final job; combine with `--parallel 2` inside shards. Parallel workers: start at 4 — each is a full Chromium, and `--parallel $(nproc)` on 16 cores is an OOM that reads as flake. Parallelism moves the bottleneck to the app server, so coordinate concurrent sessions.
+
+PR gate = a Chromium-only `@smoke`/`@critical` run, the identical command in every repo; `@api` suites are the cheapest first gate because they need no browser; full regression and the browser matrix run nightly, as do `@a11y` and `@external` (the latter alone). Use the same job names everywhere — names are the interface.
 
 ---
 
