@@ -143,7 +143,7 @@ codex "use webship-js agent to scaffold and test https://example.com"
 
 ## Requirements
 
-- Node.js >= 20.0 (webship-js `engines`).
+- Node.js >= 24.0 (webship-js `engines`).
 - One of: Claude Code, GitHub Copilot, Gemini CLI, or Codex CLI.
 - Optional: DDEV for containerized projects (add-on handles Playwright
   browsers).
